@@ -116,6 +116,7 @@ export function SiteFooter() {
               ©2024 Dr. Matilda A. Evans Educational Foundation, Inc. All rights
               reserved.
             </div>
+            <div className="md:text-right">Built by Wolf Consulting Group, LLC</div>
           </div>
         </div>
       </Container>

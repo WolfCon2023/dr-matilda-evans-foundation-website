@@ -66,6 +66,9 @@ export function LightboxGallery({
               <DialogPrimitive.Title className="text-sm font-semibold">
                 Photo Gallery
               </DialogPrimitive.Title>
+              <DialogPrimitive.Description className="sr-only">
+                Browse photos. Select a thumbnail to open a larger view.
+              </DialogPrimitive.Description>
               <DialogPrimitive.Close
                 className="rounded-md p-2 text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 aria-label="Close"
