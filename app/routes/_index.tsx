@@ -397,7 +397,7 @@ export default function Index() {
             </div>
             <div className="md:col-span-4 md:flex md:justify-end">
               <Button asChild size="lg">
-                <a href="/contact">Donate (inquire)</a>
+                <a href="/contact?category=donate">Donate (inquire)</a>
               </Button>
             </div>
           </div>

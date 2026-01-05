@@ -68,9 +68,12 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
-                <a className="hover:text-foreground" href="/#donate">
+                <Link
+                  className="hover:text-foreground"
+                  to="/contact?category=donate"
+                >
                   Donate
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

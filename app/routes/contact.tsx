@@ -71,6 +71,7 @@ export default function ContactRoute() {
               </option>
               <option value="volunteer">Volunteer</option>
               <option value="partner">Partner</option>
+              <option value="donate">Donation</option>
               <option value="inquiry">General inquiry</option>
             </Select>
           </div>

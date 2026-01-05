@@ -28,7 +28,7 @@ const ContactSchema = z.object({
   website: z.string().optional(),
   name: z.string().trim().min(2).max(120),
   email: z.string().trim().email().max(200),
-  category: z.enum(["volunteer", "partner", "inquiry"]),
+  category: z.enum(["volunteer", "partner", "donate", "inquiry"]),
   subject: z.string().trim().max(200).optional().or(z.literal("")),
   message: z.string().trim().min(10).max(5000),
 });
@@ -140,6 +140,8 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       ? "Volunteer"
       : category === "partner"
         ? "Partner"
+        : category === "donate"
+          ? "Donation"
         : "General inquiry";
 
   const cleanSubject = subject?.trim()
