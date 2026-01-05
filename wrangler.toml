@@ -1,0 +1,12 @@
+name = "dr-matilda-evans-foundation-website"
+compatibility_date = "2025-12-30"
+
+# Cloudflare Pages will serve static assets from your configured output directory
+# (typically `public/`) and run Functions from the `functions/` directory.
+#
+# This file is primarily useful for local development with Wrangler and for
+# documenting the compatibility date used by the Workers runtime.
+
+
+
+

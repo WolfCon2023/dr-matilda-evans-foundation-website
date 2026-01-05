@@ -1,0 +1,140 @@
+{
+  "items": [
+    {
+      "title": "46",
+      "url": "/",
+      "children": []
+    },
+    {
+      "title": "47",
+      "url": "/",
+      "children": []
+    },
+    {
+      "title": "Visit Historic House",
+      "url": "https://www.historiccolumbia.org/blog/matilda-evans-house-2027-taylor-st",
+      "external": true,
+      "children": []
+    },
+    {
+      "title": "Untitled",
+      "url": "",
+      "children": []
+    },
+    {
+      "title": "48",
+      "url": "/contact-us",
+      "children": []
+    },
+    {
+      "title": "South Carolina’s Brainiest Negro",
+      "url": "/south-carolinas-brainiest-negro",
+      "children": []
+    },
+    {
+      "title": "South Carolina’s Brainiest Negro",
+      "url": "/south-carolinas-brainiest-negro",
+      "children": []
+    },
+    {
+      "title": "About Dr. Matilda Evans",
+      "url": "/about",
+      "children": []
+    },
+    {
+      "title": "About Dr. Matilda Evans",
+      "url": "/about",
+      "children": [
+        {
+          "title": "623",
+          "url": "/dr-matilda-a-evans-photo-gallery",
+          "children": []
+        },
+        {
+          "title": "Visit Historic House",
+          "url": "https://www.historiccolumbia.org/blog/matilda-evans-house-2027-taylor-st",
+          "external": true,
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Columbia SC 63",
+      "url": "https://www.columbiasc63.com/",
+      "external": true,
+      "children": []
+    },
+    {
+      "title": "456",
+      "url": "/martha-schofield",
+      "children": []
+    },
+    {
+      "title": "734",
+      "url": "/seminars",
+      "children": []
+    },
+    {
+      "title": "530",
+      "url": "/board-of-directors",
+      "children": [
+        {
+          "title": "Meet the Board of Directors",
+          "url": "/board-of-directors",
+          "children": []
+        },
+        {
+          "title": "A Letter From The Board of Directors",
+          "url": "/a-letter-from-the-board-of-directors",
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Olga  Mauvene Aiken Swanson",
+      "url": "/in-loving-memory-olga-aiken-swanson",
+      "children": []
+    },
+    {
+      "title": "Research",
+      "url": "/research",
+      "children": [
+        {
+          "title": "DR MATILDA A. EVANS ON EDUCATION (written in 1916)",
+          "url": "/dr-matilda-a-evans-on-education-written-in-1916",
+          "children": []
+        },
+        {
+          "title": "MATILDA A EVANS MD ON THE AFTERMATH OF THE CIVIL WAR (written in 1916)",
+          "url": "/matilda-a-evans-md-on-the-aftermath-of-the-civil-war-written-in-1916",
+          "children": []
+        },
+        {
+          "title": "Dr Matilda A Evans on Historical Black Colleges and Universities (written in 1916)",
+          "url": "/dr-matilda-a-evans-on-historical-black-colleges-and-universities-written-in-1916",
+          "children": []
+        },
+        {
+          "title": "DR MATILDA A. EVANS ON THE GREAT PROGRESS OF THE NEGRO IN POST CIVIL WAR (written in 1916)",
+          "url": "/dr-matilda-a-evans-on-the-great-progress-of-the-negro-in-post-civil-war-written-in-1916",
+          "children": []
+        },
+        {
+          "title": "DR MATILDA A. EVANS ON A SEPARATE TERRITORY GIVEN TO THE NEGRO (written in 1916)",
+          "url": "/dr-matilda-a-evans-on-the-negro-being-given-a-separate-territory-by-the-united-states-government-written-in-1916",
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Dr. Evan’s Class",
+      "url": "/dr-evans-academy",
+      "children": []
+    },
+    {
+      "title": "Contact Us",
+      "url": "/contact",
+      "children": []
+    }
+  ]
+}

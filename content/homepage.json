@@ -1,0 +1,103 @@
+{
+  "hero": {
+    "kicker": "Preserving legacy. Expanding opportunity.",
+    "headline": "The Dr. Matilda A. Evans Educational Foundation",
+    "subhead": "Honoring the life and historic impact of Dr. Matilda A. Evans—South Carolina’s first African American woman physician—through education, public history, and community programs.",
+    "primaryCta": { "label": "Explore the Foundation", "href": "#explore-foundation" },
+    "secondaryCta": { "label": "Contact Us", "href": "/contact" },
+    "heroQuote": {
+      "headline": "“The Brainiest Negro in South Carolina”",
+      "quote": "“If Columbia physicians were asked to name the South Carolina negro who had been of most service to the colored race, his answer would undoubtedly be Dr. Evans of the Taylor Lane Hospital.”",
+      "source": "South Carolina State Paper",
+      "portrait": {
+        "src": "/images/Dr__Matilda_A__Evans-226x300.jpg",
+        "alt": "Portrait photograph"
+      }
+    }
+  },
+  "featuredStory": {
+    "title": "A legacy rooted in Columbia, shared with the world",
+    "description": "Dr. Evans’ work shaped healthcare and civic life. Our foundation preserves her story and advances educational pathways inspired by her example.",
+    "image": { "src": "/images/historical-marker-300x169.jpg", "alt": "Historic marker commemorating Dr. Matilda A. Evans" }
+  },
+  "fromTheArchives": {
+    "title": "From the Archives",
+    "description": "Primary-source writing and historical documents connected to Dr. Evans’ era and influence.",
+    "featured": {
+      "title": "Martha Schofield: Pioneer Educator Arrives",
+      "kicker": "Excerpts (1916) — Dr. Matilda A. Evans",
+      "description": "A tribute to pioneer educator Martha Schofield and the lasting impact of the Schofield School in Aiken, South Carolina.",
+      "href": "/martha-schofield"
+    }
+  },
+  "programs": {
+    "title": "Explore the Foundation",
+    "items": [
+      {
+        "title": "Foundation History",
+        "description": "Learn about Dr. Matilda A. Evans’ story, the historic homesite, and how the Foundation preserves and shares her legacy through public education and community history.",
+        "href": "/about"
+      },
+      {
+        "title": "Dr. Evans Academy",
+        "description": "Stories, lessons, and educational resources from the Dr. Evans Academy.",
+        "href": "/dr-evans-academy"
+      },
+      {
+        "title": "Seminars",
+        "description": "Browse upcoming seminars and watch recordings from past presentations.",
+        "href": "/seminars"
+      },
+      {
+        "title": "Photo Gallery",
+        "description": "View archival photographs and documents highlighting Dr. Evans’ life, work, and legacy.",
+        "href": "/dr-matilda-a-evans-photo-gallery"
+      },
+      {
+        "title": "Partner with Us",
+        "description": "Volunteer, collaborate, or sponsor a program. We welcome schools, cultural institutions, researchers, and community organizations aligned with the Foundation’s mission.",
+        "href": "/volunteer-partner"
+      },
+      {
+        "title": "Board of Directors",
+        "description": "Meet the people stewarding the Foundation’s mission and guiding its work.",
+        "href": "/board-of-directors"
+      },
+      {
+        "title": "A Letter from the Board",
+        "description": "Read a message from the Executive Board about the Foundation’s upcoming programs and priorities.",
+        "href": "/a-letter-from-the-board-of-directors"
+      }
+    ]
+  },
+  "visitHouse": {
+    "title": "Visit the Historic House",
+    "description": "The Dr. Matilda A. Evans House is a landmark of African American medical history. We’re building a visitor experience that honors the past and welcomes the future.",
+    "image": { "src": "/images/cropped-historical-marker-300x300.jpg", "alt": "Historic marker detail" },
+    "cta": { "label": "Get directions", "href": "https://www.google.com/maps/search/?api=1&query=Matilda+Evans+House+Columbia+SC" }
+  },
+  "bookSpotlight": {
+    "title": "Book Spotlight",
+    "description": "Explore scholarship and storytelling that contextualize Dr. Evans’ significance in American history.",
+    "image": { "src": "/images/BookBlueBG-300x232.png", "alt": "Book cover graphic" },
+    "links": [
+      { "label": "Purchase (Amazon)", "href": "https://www.amazon.com/South-Carolinas-Matilda-Evans-American/dp/1467159085" },
+      { "label": "Purchase (Independent)", "href": "https://bookshop.org/p/books/south-carolina-s-matilda-evans-a-medical-pioneer-anusha-ghosh/cea4192a37ab15e9?ean=9781467159081&next=t" },
+      { "label": "Purchase (Barnes & Noble)", "href": "https://www.barnesandnoble.com/w/south-carolinas-matilda-evans-walter-curry/1146421606?ean=9781540266156" },
+      { "label": "Purchase (Arcadia Publishing)", "href": "https://www.arcadiapublishing.com/products/south-carolinas-matilda-evans-9781467159081?insightsIndex=arcadia-publishing_products&objectID=9781467159081&queryID=097451c492b533c71354f1545733b1b6" }
+    ]
+  },
+  "boardLetterTeaser": {
+    "title": "A letter from the Board",
+    "description": "Our work is guided by community and stewardship. Read how we’re approaching preservation, education, and partnership in the years ahead.",
+    "cta": { "label": "Read the letter", "href": "/board-letter" }
+  },
+  "contactCta": {
+    "title": "Let’s connect",
+    "description": "Whether you’re a researcher, partner organization, student, or supporter, we’d love to hear from you.",
+    "cta": { "label": "Contact the Foundation", "href": "/contact" }
+  }
+}
+
+
+
