@@ -1,5 +1,7 @@
 name = "dr-matilda-evans-foundation-website"
 compatibility_date = "2025-12-30"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "build/client"
 
 # Cloudflare Pages will serve static assets from your configured output directory
 # (typically `public/`) and run Functions from the `functions/` directory.
