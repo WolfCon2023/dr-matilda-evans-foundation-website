@@ -11,6 +11,15 @@ export type LightboxItem = {
   caption?: string;
 };
 
+function normalizeSrc(src: string) {
+  // Ensure local assets are absolute so they don't become route-relative like
+  // `/dr-matilda-a-evans-photo-gallery/images/...` (which 404s).
+  if (!src) return src;
+  if (/^https?:\/\//i.test(src)) return src;
+  if (src.startsWith("/")) return src;
+  return `/${src}`;
+}
+
 export function LightboxGallery({
   items,
 }: {
@@ -38,7 +47,7 @@ export function LightboxGallery({
             }}
           >
             <SmartImage
-              src={img.src}
+              src={normalizeSrc(img.src)}
               alt={img.alt}
               className="aspect-[4/3] w-full object-cover transition duration-300 group-hover:scale-[1.02]"
             />
@@ -80,7 +89,7 @@ export function LightboxGallery({
             {active ? (
               <figure className="p-4">
                 <SmartImage
-                  src={active.src}
+                  src={normalizeSrc(active.src)}
                   alt={active.alt}
                   className="max-h-[70vh] w-full rounded-xl object-contain"
                 />
