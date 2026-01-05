@@ -1,0 +1,26 @@
+.DS_Store
+.env
+.env.*
+
+# Dependencies
+node_modules/
+
+# Remix / Vite build output
+build/
+.cache/
+.vite/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Wrangler / Cloudflare
+.wrangler/
+
+# Editor/OS
+.idea/
+.vscode/
+*.swp
+
