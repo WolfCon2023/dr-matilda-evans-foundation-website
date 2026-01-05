@@ -113,7 +113,7 @@ export function SiteFooter() {
         <div className="md:col-span-12">
           <div className="flex flex-col gap-2 border-t border-border/70 pt-6 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
             <div>
-              ©2024 Dr. Matilda A. Evans Educational Foundation. All rights
+              ©2024 Dr. Matilda A. Evans Educational Foundation, Inc. All rights
               reserved.
             </div>
           </div>
