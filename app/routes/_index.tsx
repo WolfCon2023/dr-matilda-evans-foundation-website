@@ -1,5 +1,6 @@
 import { Link } from "@remix-run/react";
 import { motion } from "framer-motion";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
 import {
   BookOpen,
   Handshake,
@@ -7,6 +8,7 @@ import {
   Newspaper,
   Images,
   Users,
+  X,
 } from "lucide-react";
 import type { MetaFunction } from "@remix-run/node";
 
@@ -14,6 +16,7 @@ import homepage from "../../content/homepage.json";
 import { Container } from "~/components/site/container";
 import { Reveal } from "~/components/site/reveal";
 import { SmartImage } from "~/components/site/smart-image";
+import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 
@@ -27,6 +30,10 @@ export const meta: MetaFunction = () => [
 ];
 
 export default function Index() {
+  const brainiestYear = (homepage.hero.heroQuote as any).year as number | undefined;
+  const brainiestAge =
+    typeof brainiestYear === "number" ? new Date().getFullYear() - brainiestYear : null;
+
   return (
     <div>
       <section className="relative overflow-hidden">
@@ -87,24 +94,110 @@ export default function Index() {
 
                   <div className="px-5 pb-5">
                     <div className="grid gap-4 rounded-2xl border border-border/60 bg-background/70 p-4 backdrop-blur md:grid-cols-[96px_1fr]">
-                      <SmartImage
-                        src={homepage.hero.heroQuote.portrait.src}
-                        alt={homepage.hero.heroQuote.portrait.alt}
-                        className="h-24 w-24 rounded-xl object-cover"
-                        loading="eager"
-                        fetchPriority="high"
-                      />
+                      <DialogPrimitive.Root>
+                        <DialogPrimitive.Trigger asChild>
+                          <button
+                            type="button"
+                            className="h-24 w-24 overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background"
+                            aria-label="Open article preview"
+                          >
+                            <SmartImage
+                              src={homepage.hero.heroQuote.portrait.src}
+                              alt={homepage.hero.heroQuote.portrait.alt}
+                              className="h-24 w-24 object-cover"
+                              loading="eager"
+                              fetchPriority="high"
+                            />
+                          </button>
+                        </DialogPrimitive.Trigger>
                       <div>
                         <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                           {homepage.hero.heroQuote.source}
                         </div>
+                        <div className="mt-2">
+                          <Badge className="bg-primary/10 text-primary hover:bg-primary/15" variant="secondary">
+                            Written {((homepage.hero.heroQuote as any).published as string | undefined) ?? "in 1910"}
+                            {typeof brainiestAge === "number" && brainiestAge >= 100
+                              ? ` • ${brainiestAge}+ years old`
+                              : ""}
+                          </Badge>
+                        </div>
                         <div className="mt-2 font-serif text-lg font-semibold leading-snug">
-                          {homepage.hero.heroQuote.headline}
+                          <DialogPrimitive.Trigger asChild>
+                            <button
+                              type="button"
+                              className="text-left underline decoration-primary/30 underline-offset-4 hover:decoration-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background"
+                            >
+                              <span className="bg-accent/60 px-1">
+                                {homepage.hero.heroQuote.headline}
+                              </span>
+                            </button>
+                          </DialogPrimitive.Trigger>
                         </div>
                         <blockquote className="mt-2 text-sm leading-relaxed text-muted-foreground">
                           {homepage.hero.heroQuote.quote}
                         </blockquote>
                       </div>
+                        <DialogPrimitive.Portal>
+                          <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/55 backdrop-blur-sm" />
+                          <DialogPrimitive.Content className="fixed left-1/2 top-1/2 z-50 w-[92vw] max-w-3xl -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-border/40 bg-background shadow-2xl">
+                            <div className="flex items-start justify-between gap-4 border-b border-border/70 px-5 py-4">
+                              <div>
+                                <DialogPrimitive.Title className="font-serif text-xl font-semibold tracking-tight">
+                                  {homepage.hero.heroQuote.headline}
+                                </DialogPrimitive.Title>
+                                <DialogPrimitive.Description className="mt-1 text-sm text-muted-foreground">
+                                  A century-old newspaper profile — published{" "}
+                                  {((homepage.hero.heroQuote as any).published as string | undefined) ?? "in 1910"}
+                                  {typeof brainiestAge === "number" && brainiestAge >= 100
+                                    ? ` (${brainiestAge}+ years ago)`
+                                    : ""}{" "}
+                                  — celebrating Dr. Evans’ impact in Columbia.
+                                </DialogPrimitive.Description>
+                              </div>
+                              <DialogPrimitive.Close
+                                className="rounded-md p-2 text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                                aria-label="Close"
+                              >
+                                <X className="h-5 w-5" />
+                              </DialogPrimitive.Close>
+                            </div>
+
+                            <div className="grid gap-6 p-5 md:grid-cols-[160px_1fr] md:items-start">
+                              <div className="overflow-hidden rounded-xl border border-border/60 bg-muted/20">
+                                <SmartImage
+                                  src={homepage.hero.heroQuote.portrait.src}
+                                  alt={homepage.hero.heroQuote.portrait.alt}
+                                  className="aspect-[3/4] w-full object-cover"
+                                />
+                              </div>
+                              <div>
+                                <div className="mb-3">
+                                  <Badge variant="secondary" className="bg-primary/10 text-primary">
+                                    Written {((homepage.hero.heroQuote as any).published as string | undefined) ?? "in 1910"}
+                                    {typeof brainiestAge === "number" && brainiestAge >= 100
+                                      ? ` • ${brainiestAge}+ years old`
+                                      : ""}
+                                  </Badge>
+                                </div>
+                                <blockquote className="text-sm leading-relaxed text-muted-foreground">
+                                  {homepage.hero.heroQuote.quote}
+                                </blockquote>
+                                <div className="mt-5 flex flex-col gap-2 sm:flex-row">
+                                  <Button asChild>
+                                    <Link to={((homepage.hero.heroQuote as any).href as string | undefined) ?? "/south-carolinas-brainiest-negro"}>
+                                      Read the full 1910 article →
+                                    </Link>
+                                  </Button>
+                                  <Button asChild variant="outline">
+                                    <Link to="/research">Explore more primary-source writing</Link>
+                                  </Button>
+                                </div>
+                              </div>
+                            </div>
+                          </DialogPrimitive.Content>
+                        </DialogPrimitive.Portal>
+                      </DialogPrimitive.Root>
                     </div>
                   </div>
                 </div>
