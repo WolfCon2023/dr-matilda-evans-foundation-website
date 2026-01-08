@@ -17,6 +17,7 @@ import "@fontsource-variable/newsreader";
 import { SiteFooter } from "~/components/site/site-footer";
 import { SiteHeader } from "~/components/site/site-header";
 import { SkipLink } from "~/components/site/skip-link";
+import { CookieConsentBanner } from "~/components/site/cookie-consent";
 import { absoluteUrl, getSite, organizationJsonLd } from "~/seo";
 
 export const links: LinksFunction = () => [
@@ -34,12 +35,16 @@ export const meta: MetaFunction<typeof loader> = () => {
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const url = new URL(request.url);
-  return { origin: url.origin };
+  const cookieHeader = request.headers.get("Cookie") ?? "";
+  const m = /(?:^|;\s*)cookie_consent=(accept|decline)(?:;|$)/.exec(cookieHeader);
+  const cookieConsent = (m?.[1] as "accept" | "decline" | undefined) ?? null;
+  return { origin: url.origin, cookieConsent };
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const data = useLoaderData<typeof loader>();
   const origin = data?.origin ?? "";
+  const cookieConsent = data?.cookieConsent ?? null;
   const location = useLocation();
   const canonical = absoluteUrl(origin, location.pathname);
   const site = getSite();
@@ -78,6 +83,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <main id="main">{children}</main>
           <SiteFooter />
         </div>
+        <CookieConsentBanner initialConsent={cookieConsent} />
         <ScrollRestoration />
         <Scripts />
       </body>
