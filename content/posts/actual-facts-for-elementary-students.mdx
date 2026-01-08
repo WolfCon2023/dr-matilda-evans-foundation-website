@@ -7,4 +7,60 @@ updated: "2024-11-26"
 wpId: 927
 wpLink: "https://drmatildaevansfoundation.org/2024/11/26/actual-facts-for-elementary-students/"
 ---
-**1… A sneeze can travel up to 99 miles per hour as it leaves your nose.**   **2…The largest gland in the body is the liver**   **3… the Master Gland in the body is the Pituatory Gland**   **4… There are 640 muscles in the human body**   **5… There are 206 bones in the human body**   **6…The strongest muscle in the body is the Masseter muscle, responsible for chewing the food you eat.  It has a force of up to 200 pounds.**   **7…The acid in your stomach is strong enough to dissolve certain metals object**   **8…The largest bone in your body is the femur, also known as your thigh bone.**    **9… The smallest bone in your body is the stirrup bone, located inside your ear drum.**   **10…Your pinky is your strongest finger.**
+import {
+  Activity,
+  Bone,
+  Brain,
+  Dumbbell,
+  Ear,
+  FlaskConical,
+  Hand,
+  Utensils,
+  Wind,
+} from "lucide-react";
+
+export function Fact({ n, icon: Icon, children }) {
+  return (
+    <li className="group flex gap-4 rounded-2xl border border-border/60 bg-card p-4 shadow-sm transition-colors hover:bg-accent/20 sm:p-5">
+      <span className="sr-only">{n}.</span>
+      <span className="mt-0.5 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-primary shadow-sm">
+        <Icon className="h-5 w-5" />
+      </span>
+      <div className="text-sm leading-relaxed text-foreground">{children}</div>
+    </li>
+  );
+}
+
+<ol className="not-prose mt-6 grid gap-3">
+  <Fact n={1} icon={Wind}>
+    A sneeze can travel up to 99 miles per hour as it leaves your nose.
+  </Fact>
+  <Fact n={2} icon={Activity}>
+    The largest gland in the body is the liver.
+  </Fact>
+  <Fact n={3} icon={Brain}>
+    The Master Gland in the body is the Pituitary Gland.
+  </Fact>
+  <Fact n={4} icon={Dumbbell}>
+    There are 640 muscles in the human body.
+  </Fact>
+  <Fact n={5} icon={Bone}>
+    There are 206 bones in the human body.
+  </Fact>
+  <Fact n={6} icon={Utensils}>
+    The strongest muscle in the body is the Masseter muscle, responsible for chewing the food you
+    eat. It has a force of up to 200 pounds.
+  </Fact>
+  <Fact n={7} icon={FlaskConical}>
+    The acid in your stomach is strong enough to dissolve certain metal objects.
+  </Fact>
+  <Fact n={8} icon={Bone}>
+    The largest bone in your body is the femur, also known as your thigh bone.
+  </Fact>
+  <Fact n={9} icon={Ear}>
+    The smallest bone in your body is the stirrup bone, located inside your ear drum.
+  </Fact>
+  <Fact n={10} icon={Hand}>
+    Your pinky is your strongest finger.
+  </Fact>
+</ol>
