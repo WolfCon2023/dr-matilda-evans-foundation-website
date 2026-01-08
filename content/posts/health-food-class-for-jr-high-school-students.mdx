@@ -7,6 +7,29 @@ updated: "2024-11-18"
 wpId: 875
 wpLink: "https://drmatildaevansfoundation.org/2024/11/18/health-food-class-for-jr-high-school-students/"
 ---
+import {
+  Anchor,
+  Building2,
+  Globe,
+  Landmark,
+  MoonStar,
+  Shield,
+  Timer,
+  Waves,
+  Wheat,
+} from "lucide-react";
+
+export function Fact({ icon: Icon, children }) {
+  return (
+    <li className="group flex gap-4 rounded-2xl border border-border/60 bg-card p-4 shadow-sm transition-colors hover:bg-accent/20 sm:p-5">
+      <span className="mt-0.5 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-primary shadow-sm">
+        <Icon className="h-5 w-5" />
+      </span>
+      <div className="text-sm leading-relaxed text-foreground">{children}</div>
+    </li>
+  );
+}
+
 **THE DR. MATILDA A. EVANS’ CLASS**
 
 ## The Best Bean on Earth!
@@ -17,12 +40,44 @@ I speak none other than of the **Navy Pea Bean (_Phaseolus vulgaris_)**.
 
 ## Quick facts about the Navy Pea Bean
 
-- The Navy Bean has its origin in Peru, South America thousands of years ago.
-- The United States Navy started serving Navy Beans in the mid 1800’s to enlisted sailors as a staple because of the great nutritional value. This is how the bean got its name “Navy Pea Bean”.
-- The Navy Pea Bean helps the sailors to maintain energy levels during long periods of time spent under water. Additionally, this bean is high in protein and carbohydrates.
-- Because of the high fiber content, Navy Beans digest more slowly in the body for sustained energy.
-- Navy Beans are also low in calories, yet high in fiber, thus great for weight loss because they are filling, causing you to eat less throughout the day.
-- The United States Senate Bean Soup is served in the dining room of the United States Senate every day. It is a tradition that dates back to the early years of the 20th century. In 1940 a bowl of Navy Bean Soup was only fifteen cents.
-- During World War II, Australia served Navy Beans to troops. The bean was popular and were referred to as “Yankee Beans”.
-- Navy Beans are still a key ingredient for the world famous “Boston Baked Beans” recipe, fondly named after the city of Boston, Mass. This recipe became so popular that the city became known as “Bean Town”.
-- In the mid 1930’s the Nation of Islam was encouraged by The Honorable Elijah Muhammad to add the Navy Pea Bean as a stable soup to his followers. In fact, he created the Navy Bean Pie as a healthier alternative to the more known sweet potato pie.
+<ul className="not-prose mt-4 grid gap-3">
+  <Fact icon={Globe}>
+    The Navy Bean has its origin in Peru, South America thousands of years ago.
+  </Fact>
+  <Fact icon={Anchor}>
+    The United States Navy started serving Navy Beans in the mid 1800’s to enlisted sailors as a
+    staple because of the great nutritional value. This is how the bean got its name “Navy Pea
+    Bean”.
+  </Fact>
+  <Fact icon={Waves}>
+    The Navy Pea Bean helps the sailors to maintain energy levels during long periods of time spent
+    under water. Additionally, this bean is high in protein and carbohydrates.
+  </Fact>
+  <Fact icon={Wheat}>
+    Because of the high fiber content, Navy Beans digest more slowly in the body for sustained
+    energy.
+  </Fact>
+  <Fact icon={Timer}>
+    Navy Beans are also low in calories, yet high in fiber, thus great for weight loss because they
+    are filling, causing you to eat less throughout the day.
+  </Fact>
+  <Fact icon={Landmark}>
+    The United States Senate Bean Soup is served in the dining room of the United States Senate
+    every day. It is a tradition that dates back to the early years of the 20th century. In 1940 a
+    bowl of Navy Bean Soup was only fifteen cents.
+  </Fact>
+  <Fact icon={Shield}>
+    During World War II, Australia served Navy Beans to troops. The bean was popular and were
+    referred to as “Yankee Beans”.
+  </Fact>
+  <Fact icon={Building2}>
+    Navy Beans are still a key ingredient for the world famous “Boston Baked Beans” recipe, fondly
+    named after the city of Boston, Mass. This recipe became so popular that the city became known
+    as “Bean Town”.
+  </Fact>
+  <Fact icon={MoonStar}>
+    In the mid 1930’s the Nation of Islam was encouraged by The Honorable Elijah Muhammad to add the
+    Navy Pea Bean as a stable soup to his followers. In fact, he created the Navy Bean Pie as a
+    healthier alternative to the more known sweet potato pie.
+  </Fact>
+</ul>
