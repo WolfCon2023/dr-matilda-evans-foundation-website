@@ -7,17 +7,70 @@ updated: "2024-11-18"
 wpId: 873
 wpLink: "https://drmatildaevansfoundation.org/2024/11/18/ten-science-facts-for-elementary-students/"
 ---
+import {
+  Apple,
+  Beef,
+  Bone,
+  Brain,
+  Droplet,
+  Eye,
+  Fish,
+  HeartPulse,
+  Mountain,
+  Sun,
+  Sprout,
+} from "lucide-react";
+
+export function Fact({ n, icon: Icon, children }) {
+  return (
+    <li className="group flex gap-4 rounded-2xl border border-border/60 bg-card p-4 shadow-sm transition-colors hover:bg-accent/20 sm:p-5">
+      <span className="sr-only">{n}.</span>
+      <div className="mt-0.5 flex shrink-0 items-center gap-2">
+        <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-primary/25 bg-primary text-xs font-semibold text-primary-foreground shadow-sm">
+          {n}
+        </span>
+        <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-primary shadow-sm">
+          <Icon className="h-5 w-5" />
+        </span>
+      </div>
+      <div className="text-sm leading-relaxed text-foreground">{children}</div>
+    </li>
+  );
+}
+
 **DR. MATILDA A. EVANS’ CLASS**
 
 ## Ten Science Facts (Elementary)
 
-1. Some fish actually cough to clear their gills.
-2. Horses and cows actually sleep standing up.
-3. Sharks do not have any bones in their bodies.
-4. Your heart beats about 115,000 times in a day.
-5. Apples are part of the Rose family.
-6. It takes between two and three years for a pineapple to grow.
-7. Iron makes up almost 5% of the Earth’s crust.
-8. Your eye is comprised of about 2 million parts.
-9. Over one million earths can fit inside the Sun.
-10. 75% of your brain is made up of water.
+<ol className="not-prose mt-4 grid gap-3">
+  <Fact n={1} icon={Fish}>
+    Some fish actually cough to clear their gills.
+  </Fact>
+  <Fact n={2} icon={Beef}>
+    Horses and cows actually sleep standing up.
+  </Fact>
+  <Fact n={3} icon={Bone}>
+    Sharks do not have any bones in their bodies.
+  </Fact>
+  <Fact n={4} icon={HeartPulse}>
+    Your heart beats about 115,000 times in a day.
+  </Fact>
+  <Fact n={5} icon={Apple}>
+    Apples are part of the Rose family.
+  </Fact>
+  <Fact n={6} icon={Sprout}>
+    It takes between two and three years for a pineapple to grow.
+  </Fact>
+  <Fact n={7} icon={Mountain}>
+    Iron makes up almost 5% of the Earth’s crust.
+  </Fact>
+  <Fact n={8} icon={Eye}>
+    Your eye is comprised of about 2 million parts.
+  </Fact>
+  <Fact n={9} icon={Sun}>
+    Over one million earths can fit inside the Sun.
+  </Fact>
+  <Fact n={10} icon={Droplet}>
+    75% of your brain is made up of water.
+  </Fact>
+</ol>
