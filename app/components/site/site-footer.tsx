@@ -1,8 +1,21 @@
 import { Link } from "@remix-run/react";
 
 import { Container } from "~/components/site/container";
+import { getSite } from "~/seo";
+
+function toTelHref(phone: string) {
+  const digits = phone.replace(/[^\d+]/g, "");
+  if (!digits) return "";
+  if (digits.startsWith("+")) return `tel:${digits}`;
+  if (digits.length === 10) return `tel:+1${digits}`;
+  return `tel:${digits}`;
+}
 
 export function SiteFooter() {
+  const site = getSite();
+  const phone = site.telephone?.trim();
+  const phoneHref = phone ? toTelHref(phone) : "";
+
   return (
     <footer className="border-t border-border/70 bg-background">
       <Container className="grid gap-10 py-12 md:grid-cols-12">
@@ -30,6 +43,13 @@ export function SiteFooter() {
                   Contact
                 </Link>
               </li>
+              {phone && phoneHref ? (
+                <li>
+                  <a className="hover:text-foreground" href={phoneHref}>
+                    {phone}
+                  </a>
+                </li>
+              ) : null}
             </ul>
           </div>
 

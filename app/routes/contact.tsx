@@ -6,6 +6,15 @@ import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Select } from "~/components/ui/select";
 import { Textarea } from "~/components/ui/textarea";
+import { getSite } from "~/seo";
+
+function toTelHref(phone: string) {
+  const digits = phone.replace(/[^\d+]/g, "");
+  if (!digits) return "";
+  if (digits.startsWith("+")) return `tel:${digits}`;
+  if (digits.length === 10) return `tel:+1${digits}`;
+  return `tel:${digits}`;
+}
 
 export const meta: MetaFunction = () => [
   { title: "Contact | Dr. Matilda A. Evans Educational Foundation" },
@@ -21,6 +30,9 @@ export default function ContactRoute() {
   const isSubmitting = fetcher.state !== "idle";
   const [searchParams] = useSearchParams();
   const preselectedCategory = searchParams.get("category") ?? "";
+  const site = getSite();
+  const phone = site.telephone?.trim();
+  const phoneHref = phone ? toTelHref(phone) : "";
 
   return (
     <Container className="py-14 md:py-20">
@@ -32,6 +44,14 @@ export default function ContactRoute() {
           Send a note to the Foundation. We typically respond within a few
           business days.
         </p>
+        {phone && phoneHref ? (
+          <p className="mt-3 text-sm text-muted-foreground">
+            Phone:{" "}
+            <a className="font-medium text-foreground hover:underline" href={phoneHref}>
+              {phone}
+            </a>
+          </p>
+        ) : null}
 
         <fetcher.Form method="post" action="/api/contact" className="mt-10 grid gap-5">
           {/* honeypot */}
