@@ -45,11 +45,13 @@ export default function ContactRoute() {
           business days.
         </p>
         {phone && phoneHref ? (
-          <div className="mt-6 rounded-lg border border-border/70 bg-muted/30 px-4 py-3 text-sm">
-            <span className="text-muted-foreground">Contact number: </span>
-            <a className="font-medium text-foreground hover:underline" href={phoneHref}>
-              {phone}
-            </a>
+          <div className="mt-6 grid gap-2">
+            <div className="text-sm font-medium">Contact number</div>
+            <div className="rounded-lg border border-border/70 bg-muted/30 px-4 py-3 text-sm">
+              <a className="font-medium text-foreground hover:underline" href={phoneHref}>
+                {phone}
+              </a>
+            </div>
           </div>
         ) : null}
 
