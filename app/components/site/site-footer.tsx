@@ -45,7 +45,8 @@ export function SiteFooter() {
               </li>
               {phone && phoneHref ? (
                 <li>
-                  <a className="hover:text-foreground" href={phoneHref}>
+                  <span className="text-foreground/80">Contact number: </span>
+                  <a className="hover:text-foreground hover:underline" href={phoneHref}>
                     {phone}
                   </a>
                 </li>

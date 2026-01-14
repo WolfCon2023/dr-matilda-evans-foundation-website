@@ -45,12 +45,12 @@ export default function ContactRoute() {
           business days.
         </p>
         {phone && phoneHref ? (
-          <p className="mt-3 text-sm text-muted-foreground">
-            Phone:{" "}
+          <div className="mt-6 rounded-lg border border-border/70 bg-muted/30 px-4 py-3 text-sm">
+            <span className="text-muted-foreground">Contact number: </span>
             <a className="font-medium text-foreground hover:underline" href={phoneHref}>
               {phone}
             </a>
-          </p>
+          </div>
         ) : null}
 
         <fetcher.Form method="post" action="/api/contact" className="mt-10 grid gap-5">
