@@ -27,6 +27,7 @@ function escapeHtml(input: string) {
 const ContactSchema = z.object({
   website: z.string().optional(),
   name: z.string().trim().min(2).max(120),
+  phone: z.string().trim().max(40).optional().or(z.literal("")),
   email: z.string().trim().email().max(200),
   category: z.enum(["volunteer", "partner", "donate", "inquiry"]),
   subject: z.string().trim().max(200).optional().or(z.literal("")),
@@ -128,7 +129,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     );
   }
 
-  const { website, name, email, category, subject, message } = parsed.data;
+  const { website, name, phone, email, category, subject, message } = parsed.data;
 
   // Honeypot: pretend success to bots.
   if (website && website.trim().length > 0) {
@@ -148,11 +149,13 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     ? `Contact (${categoryLabel}): ${subject.trim()}`
     : `Contact (${categoryLabel})`;
 
+  const phoneLabel = phone?.trim() || "(none)";
   const html = `
     <div style="font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; line-height: 1.5">
       <h2>New message from the website contact form</h2>
       <p><strong>Name:</strong> ${escapeHtml(name)}</p>
       <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+      <p><strong>Phone:</strong> ${escapeHtml(phoneLabel)}</p>
       <p><strong>Category:</strong> ${escapeHtml(categoryLabel)}</p>
       <p><strong>Subject:</strong> ${escapeHtml(subject?.trim() || "(none)")}</p>
       <hr />
@@ -164,6 +167,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
 
 Name: ${name}
 Email: ${email}
+Phone: ${phoneLabel}
 Category: ${categoryLabel}
 Subject: ${subject?.trim() || "(none)"}
 

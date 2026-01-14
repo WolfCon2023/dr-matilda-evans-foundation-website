@@ -7,6 +7,7 @@ import { Input } from "~/components/ui/input";
 import { Select } from "~/components/ui/select";
 import { Textarea } from "~/components/ui/textarea";
 import { getSite } from "~/seo";
+import { Phone } from "lucide-react";
 
 function toTelHref(phone: string) {
   const digits = phone.replace(/[^\d+]/g, "");
@@ -45,12 +46,24 @@ export default function ContactRoute() {
           business days.
         </p>
         {phone && phoneHref ? (
-          <div className="mt-6 grid gap-2">
-            <div className="text-sm font-medium">Contact number</div>
-            <div className="rounded-lg border border-border/70 bg-muted/30 px-4 py-3 text-sm">
-              <a className="font-medium text-foreground hover:underline" href={phoneHref}>
-                {phone}
-              </a>
+          <div className="mt-6 rounded-xl border border-primary/20 bg-primary/5 p-4">
+            <div className="flex items-start gap-3">
+              <div className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
+                <Phone aria-hidden className="h-4 w-4" />
+              </div>
+              <div className="flex-1">
+                <div className="text-sm font-medium">Prefer to call the Foundation?</div>
+                <div className="mt-1 text-sm text-muted-foreground">
+                  You can reach us at{" "}
+                  <a className="font-medium text-foreground hover:underline" href={phoneHref}>
+                    {phone}
+                  </a>
+                  .
+                </div>
+              </div>
+              <Button asChild variant="outline" size="sm">
+                <a href={phoneHref}>Call</a>
+              </Button>
             </div>
           </div>
         ) : null}
@@ -69,6 +82,16 @@ export default function ContactRoute() {
               Name
             </label>
             <Input id="name" name="name" required />
+          </div>
+
+          <div className="grid gap-2">
+            <label className="text-sm font-medium" htmlFor="phone">
+              Phone number
+            </label>
+            <Input id="phone" name="phone" type="tel" autoComplete="tel" />
+            <p className="text-xs text-muted-foreground">
+              Optional, but helpful if you’d like us to contact you by phone.
+            </p>
           </div>
 
           <div className="grid gap-2">
