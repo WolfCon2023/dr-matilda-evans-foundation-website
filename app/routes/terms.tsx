@@ -50,6 +50,15 @@ export default function TermsRoute() {
           Foundation does not guarantee the site will be uninterrupted or
           error-free.
         </p>
+
+        <h2>TCPA compliance</h2>
+        <p>
+          If you provide a phone number through our contact form, you authorize
+          the Foundation to contact you at that number about your inquiry,
+          including by call or text message, as permitted by applicable law.
+          Consent is not a condition of any donation. Message and data rates may
+          apply. You may opt out of text messages at any time by replying STOP.
+        </p>
         <h2>Limitation of liability</h2>
         <p>
           To the fullest extent permitted by law, the Foundation is not liable

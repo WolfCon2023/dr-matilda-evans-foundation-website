@@ -28,6 +28,7 @@ export default function PrivacyRoute() {
         </p>
         <ul>
           <li>Name</li>
+          <li>Phone number (if provided)</li>
           <li>Email address</li>
           <li>Category (e.g., volunteer, partner, inquiry)</li>
           <li>Subject and message contents</li>
@@ -37,6 +38,7 @@ export default function PrivacyRoute() {
         <p>We use the information you provide to:</p>
         <ul>
           <li>Respond to inquiries and requests</li>
+          <li>Contact you by phone or text message if you provided a phone number</li>
           <li>Coordinate volunteer and partnership conversations</li>
           <li>Maintain internal records related to Foundation activities</li>
           <li>Protect our website and reduce spam/abuse</li>
