@@ -389,13 +389,13 @@ export function SiteHeader() {
             <Link to="/contact">Contact</Link>
           </Button>
           <Button asChild size="sm" className="h-10">
-            <a href="/contact?category=donate">Donate</a>
+            <Link to="/donate">Donate</Link>
           </Button>
         </div>
 
         <div className="flex items-center justify-end gap-2 lg:hidden">
           <Button asChild size="sm" className="h-10">
-            <a href="/contact?category=donate">Donate</a>
+            <Link to="/donate">Donate</Link>
           </Button>
           <Sheet>
             <SheetTrigger asChild>

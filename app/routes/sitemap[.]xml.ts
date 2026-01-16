@@ -6,6 +6,7 @@ import { absoluteUrl } from "~/seo";
 const RESERVED = new Set(["home", "dr-evans-academy"]);
 const ROUTE_FILES = new Set([
   "contact",
+  "donate",
   "privacy",
   "cookies",
   "terms",

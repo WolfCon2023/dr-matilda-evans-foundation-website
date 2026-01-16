@@ -91,7 +91,7 @@ export function SiteFooter() {
               <li>
                 <Link
                   className="hover:text-foreground"
-                  to="/contact?category=donate"
+                  to="/donate"
                 >
                   Donate
                 </Link>
