@@ -4,8 +4,8 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
   useLocation,
+  useRouteLoaderData,
 } from "@remix-run/react";
 import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 
@@ -42,7 +42,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const data = useLoaderData<typeof loader>();
+  const data = useRouteLoaderData<typeof loader>("root");
   const origin = data?.origin ?? "";
   const cookieConsent = data?.cookieConsent ?? null;
   const location = useLocation();
