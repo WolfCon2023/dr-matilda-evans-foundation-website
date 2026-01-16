@@ -8,6 +8,7 @@ export function getSite() {
     defaultOgImagePath: string;
     email?: string;
     telephone?: string;
+    zelleEmail?: string;
     address?: {
       streetAddress?: string;
       addressLocality?: string;

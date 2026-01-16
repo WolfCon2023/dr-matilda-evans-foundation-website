@@ -1,4 +1,5 @@
 import { z } from "zod";
+import site from "../../content/data/site.json";
 
 type Env = {
   RESEND_API_KEY?: string;
@@ -8,6 +9,9 @@ type Env = {
   CONTACT_TO_EMAIL?: string;
   CONTACT_FROM_EMAIL?: string;
 };
+
+const DEFAULT_CONTACT_TO_EMAIL =
+  (site as { email?: string }).email?.trim() || "Matildaevansmd@yahoo.com";
 
 function json(data: unknown, init: ResponseInit = {}) {
   const headers = new Headers(init.headers);
@@ -29,7 +33,7 @@ const ContactSchema = z.object({
   name: z.string().trim().min(2).max(120),
   phone: z.string().trim().max(40).optional().or(z.literal("")),
   email: z.string().trim().email().max(200),
-  category: z.enum(["volunteer", "partner", "donate", "inquiry"]),
+  category: z.enum(["volunteer", "partner", "donate", "speaking", "inquiry"]),
   subject: z.string().trim().max(200).optional().or(z.literal("")),
   message: z.string().trim().min(10).max(5000),
 });
@@ -56,9 +60,11 @@ async function rateLimit(request: Request, seconds: number) {
   return { allowed: true as const, ip };
 }
 
-async function sendWithResend(env: Env, args: { subject: string; html: string; replyTo: string }) {
+async function sendWithResend(
+  env: Env,
+  args: { to: string; subject: string; html: string; replyTo: string }
+) {
   if (!env.RESEND_API_KEY) throw new Error("RESEND_API_KEY is not set");
-  if (!env.CONTACT_TO_EMAIL) throw new Error("CONTACT_TO_EMAIL is not set");
   if (!env.CONTACT_FROM_EMAIL) throw new Error("CONTACT_FROM_EMAIL is not set");
 
   const res = await fetch("https://api.resend.com/emails", {
@@ -69,7 +75,7 @@ async function sendWithResend(env: Env, args: { subject: string; html: string; r
     },
     body: JSON.stringify({
       from: env.CONTACT_FROM_EMAIL,
-      to: env.CONTACT_TO_EMAIL,
+      to: args.to,
       subject: args.subject,
       html: args.html,
       reply_to: args.replyTo,
@@ -82,16 +88,18 @@ async function sendWithResend(env: Env, args: { subject: string; html: string; r
   }
 }
 
-async function sendWithMailgun(env: Env, args: { subject: string; text: string; replyTo: string }) {
+async function sendWithMailgun(
+  env: Env,
+  args: { to: string; subject: string; text: string; replyTo: string }
+) {
   if (!env.MAILGUN_API_KEY) throw new Error("MAILGUN_API_KEY is not set");
   if (!env.MAILGUN_DOMAIN) throw new Error("MAILGUN_DOMAIN is not set");
-  if (!env.CONTACT_TO_EMAIL) throw new Error("CONTACT_TO_EMAIL is not set");
   if (!env.CONTACT_FROM_EMAIL) throw new Error("CONTACT_FROM_EMAIL is not set");
 
   const url = `https://api.mailgun.net/v3/${env.MAILGUN_DOMAIN}/messages`;
   const form = new URLSearchParams();
   form.set("from", env.CONTACT_FROM_EMAIL);
-  form.set("to", env.CONTACT_TO_EMAIL);
+  form.set("to", args.to);
   form.set("subject", args.subject);
   form.set("text", args.text);
   form.set("h:Reply-To", args.replyTo);
@@ -143,13 +151,16 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
         ? "Partner"
         : category === "donate"
           ? "Donation"
-        : "General inquiry";
+          : category === "speaking"
+            ? "Speaking engagement"
+            : "General inquiry";
 
   const cleanSubject = subject?.trim()
     ? `Contact (${categoryLabel}): ${subject.trim()}`
     : `Contact (${categoryLabel})`;
 
   const phoneLabel = phone?.trim() || "(none)";
+  const toEmail = env.CONTACT_TO_EMAIL?.trim() || DEFAULT_CONTACT_TO_EMAIL;
   const html = `
     <div style="font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; line-height: 1.5">
       <h2>New message from the website contact form</h2>
@@ -177,9 +188,9 @@ ${message}
 
   try {
     if (env.RESEND_API_KEY) {
-      await sendWithResend(env, { subject: cleanSubject, html, replyTo: email });
+      await sendWithResend(env, { to: toEmail, subject: cleanSubject, html, replyTo: email });
     } else if (env.MAILGUN_API_KEY) {
-      await sendWithMailgun(env, { subject: cleanSubject, text, replyTo: email });
+      await sendWithMailgun(env, { to: toEmail, subject: cleanSubject, text, replyTo: email });
     } else {
       throw new Error("No email provider configured (RESEND_API_KEY or MAILGUN_API_KEY).");
     }

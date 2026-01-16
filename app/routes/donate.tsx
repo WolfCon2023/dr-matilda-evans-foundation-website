@@ -2,6 +2,7 @@ import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 
 import { Container } from "~/components/site/container";
+import { getSite } from "~/seo";
 
 export const meta: MetaFunction = () => [
   { title: "Donate (Zelle) | Dr. Matilda A. Evans Educational Foundation" },
@@ -12,7 +13,24 @@ export const meta: MetaFunction = () => [
   },
 ];
 
+function ZelleBadge() {
+  return (
+    <span className="inline-flex items-center gap-2 rounded-full bg-[#6D1ED4]/10 px-3 py-1 text-xs font-semibold text-[#6D1ED4]">
+      <span
+        aria-hidden
+        className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#6D1ED4] text-[11px] font-bold text-white"
+      >
+        Z
+      </span>
+      Zelle
+    </span>
+  );
+}
+
 export default function DonateRoute() {
+  const site = getSite();
+  const zelleEmail = site.zelleEmail?.trim() || "Matildaevansmd@yahoo.com";
+
   return (
     <Container className="py-14 md:py-20">
       <div className="prose prose-neutral max-w-3xl">
@@ -25,26 +43,31 @@ export default function DonateRoute() {
 
         <h2>Donate via Zelle</h2>
         <div className="not-prose rounded-xl border border-border/70 bg-muted/30 p-5">
-          <div className="text-sm font-semibold">Zelle recipient</div>
-          <div className="mt-1 text-sm text-muted-foreground">
-            We’ll post our Zelle recipient information here shortly.
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="text-sm font-semibold">Zelle</div>
+            <ZelleBadge />
           </div>
           <div className="mt-4 grid gap-2 text-sm">
             <div className="flex items-center justify-between gap-4">
-              <span className="text-muted-foreground">Send to</span>
-              <span className="font-medium text-foreground">(Coming soon)</span>
+              <span className="text-muted-foreground">Send to (Zelle email)</span>
+              <a className="font-medium text-foreground hover:underline" href={`mailto:${zelleEmail}`}>
+                {zelleEmail}
+              </a>
             </div>
             <div className="flex items-center justify-between gap-4">
               <span className="text-muted-foreground">Memo</span>
               <span className="font-medium text-foreground">Donation</span>
             </div>
           </div>
+          <div className="mt-4 text-xs text-muted-foreground">
+            Please contact the Foundation for wire instructions for donations above $2000.
+          </div>
         </div>
 
         <h2>How it works</h2>
         <ol>
           <li>Open Zelle in your banking app.</li>
-          <li>Send your donation to the recipient listed above.</li>
+          <li>Send your donation to the Zelle email listed above.</li>
           <li>
             If you’d like a receipt or follow-up, include your email/phone in
             the memo or send us a message via{" "}
