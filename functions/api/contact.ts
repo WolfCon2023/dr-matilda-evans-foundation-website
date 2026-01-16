@@ -196,11 +196,18 @@ ${message}
     }
   } catch (err) {
     console.error(err);
+    const detail =
+      err instanceof Error
+        ? err.message
+        : typeof err === "string"
+          ? err
+          : "Unknown error";
     return json(
       {
         ok: false,
         message:
           "We couldn’t send your message right now. Please try again later.",
+        detail,
       },
       { status: 500 }
     );
