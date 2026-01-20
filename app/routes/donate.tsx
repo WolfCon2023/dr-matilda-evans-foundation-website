@@ -84,17 +84,16 @@ export default function DonateRoute() {
               <div className="text-sm font-semibold">Cash App</div>
               <CashAppBadge />
             </div>
-            <div className="mt-4 grid gap-2 text-sm">
-              <div className="flex items-center justify-between gap-4">
-                <span className="text-muted-foreground">Cash App ID</span>
-                <a className="font-medium text-foreground hover:underline" href={cashAppUrl} target="_blank" rel="noreferrer">
-                  {cashAppId}
-                </a>
-              </div>
-              <div className="flex items-center justify-between gap-4">
-                <span className="text-muted-foreground">Memo</span>
-                <span className="font-medium text-foreground">Donation</span>
-              </div>
+            <div className="mt-4 text-sm">
+              <div className="text-muted-foreground">Cash App ID</div>
+              <a
+                className="mt-1 inline-block font-semibold text-foreground hover:underline"
+                href={cashAppUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {cashAppId}
+              </a>
             </div>
           </div>
 
@@ -106,7 +105,7 @@ export default function DonateRoute() {
         <h2>How it works</h2>
         <ol>
           <li>Open Zelle or Cash App in your banking/app experience.</li>
-          <li>Send your donation using one of the options above.</li>
+          <li>Send your donation using the Zelle email or Cash App ID above.</li>
           <li>
             If you’d like a receipt or follow-up, include your email/phone in
             the memo or send us a message via{" "}
