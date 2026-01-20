@@ -9,6 +9,7 @@ export function getSite() {
     email?: string;
     telephone?: string;
     zelleEmail?: string;
+    cashAppId?: string;
     address?: {
       streetAddress?: string;
       addressLocality?: string;
