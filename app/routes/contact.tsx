@@ -8,6 +8,7 @@ import { Select } from "~/components/ui/select";
 import { Textarea } from "~/components/ui/textarea";
 import { getSite } from "~/seo";
 import { Phone } from "lucide-react";
+import { Link } from "@remix-run/react";
 
 function toTelHref(phone: string) {
   const digits = phone.replace(/[^\d+]/g, "");
@@ -34,41 +35,48 @@ export default function ContactRoute() {
   const site = getSite();
   const phone = site.telephone?.trim();
   const phoneHref = phone ? toTelHref(phone) : "";
+  const speakingAdSrc = "/images/beverly-aiken-muhammad-speaking-ad.jpg";
 
   return (
     <Container className="py-14 md:py-20">
-      <div className="max-w-2xl">
-        <h1 className="font-serif text-3xl tracking-tight md:text-5xl">
-          Contact
-        </h1>
-        <p className="mt-4 text-muted-foreground">
-          Send a note to the Foundation. We typically respond within a few
-          business days.
-        </p>
-        {phone && phoneHref ? (
-          <div className="mt-6 rounded-xl border border-primary/20 bg-primary/5 p-4">
-            <div className="flex items-start gap-3">
-              <div className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <Phone aria-hidden className="h-4 w-4" />
-              </div>
-              <div className="flex-1">
-                <div className="text-sm font-medium">Prefer to call the Foundation?</div>
-                <div className="mt-1 text-sm text-muted-foreground">
-                  You can reach us at{" "}
-                  <a className="font-medium text-foreground hover:underline" href={phoneHref}>
-                    {phone}
-                  </a>
-                  .
+      <div className="grid gap-10 md:grid-cols-12 md:items-start">
+        <div className="md:col-span-7">
+          <h1 className="font-serif text-3xl tracking-tight md:text-5xl">
+            Contact
+          </h1>
+          <p className="mt-4 text-muted-foreground">
+            Send a note to the Foundation. We typically respond within a few
+            business days.
+          </p>
+          {phone && phoneHref ? (
+            <div className="mt-6 rounded-xl border border-primary/20 bg-primary/5 p-4">
+              <div className="flex items-start gap-3">
+                <div className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <Phone aria-hidden className="h-4 w-4" />
                 </div>
+                <div className="flex-1">
+                  <div className="text-sm font-medium">Prefer to call the Foundation?</div>
+                  <div className="mt-1 text-sm text-muted-foreground">
+                    You can reach us at{" "}
+                    <a className="font-medium text-foreground hover:underline" href={phoneHref}>
+                      {phone}
+                    </a>
+                    .
+                  </div>
+                </div>
+                <Button asChild variant="outline" size="sm">
+                  <a href={phoneHref}>Call</a>
+                </Button>
               </div>
-              <Button asChild variant="outline" size="sm">
-                <a href={phoneHref}>Call</a>
-              </Button>
             </div>
-          </div>
-        ) : null}
+          ) : null}
 
-        <fetcher.Form method="post" action="/api/contact" className="mt-10 grid gap-5">
+          <fetcher.Form
+            id="contact-form"
+            method="post"
+            action="/api/contact"
+            className="mt-10 grid gap-5"
+          >
           {/* honeypot */}
           <div className="hidden">
             <label>
@@ -146,7 +154,42 @@ export default function ContactRoute() {
               </p>
             ) : null}
           </div>
-        </fetcher.Form>
+          </fetcher.Form>
+        </div>
+
+        <aside className="md:col-span-5">
+          <div className="md:sticky md:top-24">
+            <figure className="overflow-hidden rounded-xl border border-border/70 bg-background shadow-sm">
+              <Link to="/beverly-aiken-muhammad" aria-label="View Beverly Aiken-Muhammad">
+                <img
+                  src={speakingAdSrc}
+                  alt="Speaking engagements advertisement for Beverly Aiken Muhammad, Executive Director of the Dr. Matilda A. Evans Educational Foundation."
+                  className="h-auto w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </Link>
+              <figcaption className="p-4">
+                <div className="text-sm font-semibold">Available for speaking engagements</div>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Learn more about Beverly Aiken‑Muhammad or submit a request.
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <Button asChild variant="outline" size="sm">
+                    <Link to="/beverly-aiken-muhammad">Learn more</Link>
+                  </Button>
+                  <Button asChild size="sm">
+                    <Link to="/contact?category=speaking#contact-form">Request speaking</Link>
+                  </Button>
+                </div>
+                <p className="mt-3 text-xs text-muted-foreground">
+                  Note: upload the ad image to{" "}
+                  <code className="rounded bg-muted px-1 py-0.5">{speakingAdSrc}</code>.
+                </p>
+              </figcaption>
+            </figure>
+          </div>
+        </aside>
       </div>
     </Container>
   );
