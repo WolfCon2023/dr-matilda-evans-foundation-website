@@ -1,5 +1,6 @@
 import { useFetcher, useSearchParams } from "@remix-run/react";
 import type { MetaFunction } from "@remix-run/node";
+import { useMemo, useState } from "react";
 
 import { Container } from "~/components/site/container";
 import { Button } from "~/components/ui/button";
@@ -35,7 +36,14 @@ export default function ContactRoute() {
   const site = getSite();
   const phone = site.telephone?.trim();
   const phoneHref = phone ? toTelHref(phone) : "";
-  const speakingAdSrc = "/images/beverly-aiken-muhammad-speaking-ad.jpg";
+  const preferredAdSrc = "/images/beverly-aiken-muhammad-speaking-ad.jpg";
+  const fallbackAdSrc = "/images/image_507366411-172x300.jpg";
+  const [adSrc, setAdSrc] = useState(preferredAdSrc);
+  const adAlt = useMemo(
+    () =>
+      "Speaking engagements advertisement for Beverly Aiken Muhammad, Executive Director of the Dr. Matilda A. Evans Educational Foundation.",
+    []
+  );
 
   return (
     <Container className="py-14 md:py-20">
@@ -162,11 +170,14 @@ export default function ContactRoute() {
             <figure className="overflow-hidden rounded-xl border border-border/70 bg-background shadow-sm">
               <Link to="/beverly-aiken-muhammad" aria-label="View Beverly Aiken-Muhammad">
                 <img
-                  src={speakingAdSrc}
-                  alt="Speaking engagements advertisement for Beverly Aiken Muhammad, Executive Director of the Dr. Matilda A. Evans Educational Foundation."
+                  src={adSrc}
+                  alt={adAlt}
                   className="h-auto w-full object-cover"
                   loading="lazy"
                   decoding="async"
+                  onError={() => {
+                    if (adSrc !== fallbackAdSrc) setAdSrc(fallbackAdSrc);
+                  }}
                 />
               </Link>
               <figcaption className="p-4">
@@ -182,10 +193,6 @@ export default function ContactRoute() {
                     <Link to="/contact?category=speaking#contact-form">Request speaking</Link>
                   </Button>
                 </div>
-                <p className="mt-3 text-xs text-muted-foreground">
-                  Note: upload the ad image to{" "}
-                  <code className="rounded bg-muted px-1 py-0.5">{speakingAdSrc}</code>.
-                </p>
               </figcaption>
             </figure>
           </div>
