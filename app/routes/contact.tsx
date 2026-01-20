@@ -1,6 +1,6 @@
 import { Link, useFetcher, useSearchParams } from "@remix-run/react";
 import type { MetaFunction } from "@remix-run/node";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { Container } from "~/components/site/container";
 import { Button } from "~/components/ui/button";
@@ -34,6 +34,7 @@ export default function ContactRoute() {
   const preselectedCategory = searchParams.get("category") ?? "";
   const [category, setCategory] = useState(preselectedCategory);
   const [requestSpeakingNote, setRequestSpeakingNote] = useState<string | null>(null);
+  const nameInputRef = useRef<HTMLInputElement | null>(null);
   const site = getSite();
   const phone = site.telephone?.trim();
   const phoneHref = phone ? toTelHref(phone) : "";
@@ -63,7 +64,11 @@ export default function ContactRoute() {
     } catch {
       // ignore
     }
-    document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Scroll + focus so users immediately know what to do next.
+    setTimeout(() => {
+      document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      nameInputRef.current?.focus();
+    }, 0);
   };
 
   return (
@@ -128,7 +133,7 @@ export default function ContactRoute() {
             <label className="text-sm font-medium" htmlFor="name">
               Name
             </label>
-            <Input id="name" name="name" required />
+            <Input id="name" name="name" required ref={nameInputRef} />
           </div>
 
           <div className="grid gap-2">
@@ -226,6 +231,11 @@ export default function ContactRoute() {
                     Request speaking
                   </Button>
                 </div>
+                {requestSpeakingNote ? (
+                  <p className="mt-3 text-xs text-muted-foreground" role="status" aria-live="polite">
+                    {requestSpeakingNote}
+                  </p>
+                ) : null}
               </figcaption>
             </figure>
           </div>
