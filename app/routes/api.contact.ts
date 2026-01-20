@@ -18,7 +18,7 @@ const ContactSchema = z.object({
   name: z.string().trim().min(2).max(120),
   phone: z.string().trim().max(40).optional().or(z.literal("")),
   email: z.string().trim().email().max(200),
-  category: z.enum(["volunteer", "partner", "donate", "speaking", "inquiry"]),
+  category: z.enum(["volunteer", "partner", "donate", "seminars", "speaking", "inquiry"]),
   subject: z.string().trim().max(200).optional().or(z.literal("")),
   message: z.string().trim().min(10).max(5000),
 });
@@ -118,6 +118,8 @@ export async function action({ request, context }: ActionFunctionArgs) {
         ? "Partner"
         : category === "donate"
           ? "Donation"
+          : category === "seminars"
+            ? "Seminars"
           : category === "speaking"
             ? "Speaking engagement"
             : "General inquiry";

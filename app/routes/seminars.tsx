@@ -85,7 +85,7 @@ export default function SeminarsRoute() {
               </p>
             </div>
             <Button asChild variant="secondary" className="sm:w-auto">
-              <Link to="/contact?category=inquiry">Contact about seminars</Link>
+              <Link to="/contact?category=seminars">Contact about seminars</Link>
             </Button>
           </div>
 
