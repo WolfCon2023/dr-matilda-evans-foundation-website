@@ -1,6 +1,6 @@
-import { useFetcher, useSearchParams } from "@remix-run/react";
+import { Link, useFetcher, useSearchParams } from "@remix-run/react";
 import type { MetaFunction } from "@remix-run/node";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { Container } from "~/components/site/container";
 import { Button } from "~/components/ui/button";
@@ -9,7 +9,6 @@ import { Select } from "~/components/ui/select";
 import { Textarea } from "~/components/ui/textarea";
 import { getSite } from "~/seo";
 import { Phone } from "lucide-react";
-import { Link } from "@remix-run/react";
 
 function toTelHref(phone: string) {
   const digits = phone.replace(/[^\d+]/g, "");
@@ -33,6 +32,7 @@ export default function ContactRoute() {
   const isSubmitting = fetcher.state !== "idle";
   const [searchParams] = useSearchParams();
   const preselectedCategory = searchParams.get("category") ?? "";
+  const [category, setCategory] = useState(preselectedCategory);
   const site = getSite();
   const phone = site.telephone?.trim();
   const phoneHref = phone ? toTelHref(phone) : "";
@@ -46,6 +46,23 @@ export default function ContactRoute() {
       "Speaking engagements advertisement for Beverly Aiken Muhammad, Executive Director of the Dr. Matilda A. Evans Educational Foundation.",
     []
   );
+
+  useEffect(() => {
+    setCategory(preselectedCategory);
+  }, [preselectedCategory]);
+
+  const onRequestSpeaking = () => {
+    setCategory("speaking");
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.set("category", "speaking");
+      url.hash = "contact-form";
+      window.history.replaceState(null, "", url.toString());
+    } catch {
+      // ignore
+    }
+    document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
     <Container className="py-14 md:py-20">
@@ -127,7 +144,8 @@ export default function ContactRoute() {
               id="category"
               name="category"
               required
-              defaultValue={preselectedCategory}
+              value={category}
+              onChange={(e) => setCategory(e.currentTarget.value)}
             >
               <option value="" disabled>
                 Select a category…
@@ -191,8 +209,8 @@ export default function ContactRoute() {
                   <Button asChild variant="outline" size="sm">
                     <Link to="/beverly-aiken-muhammad">Learn more</Link>
                   </Button>
-                  <Button asChild size="sm">
-                    <Link to="/contact?category=speaking#contact-form">Request speaking</Link>
+                  <Button type="button" size="sm" onClick={onRequestSpeaking}>
+                    Request speaking
                   </Button>
                 </div>
               </figcaption>
