@@ -94,6 +94,10 @@ export default function DonateRoute() {
               >
                 {cashAppId}
               </a>
+              <div className="mt-3 flex items-center justify-between gap-4 text-sm">
+                <span className="text-muted-foreground">For</span>
+                <span className="font-medium text-foreground">Donation</span>
+              </div>
             </div>
             <div className="mt-4">
               <div className="text-sm text-muted-foreground">Scan to pay</div>
