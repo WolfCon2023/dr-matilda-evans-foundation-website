@@ -33,6 +33,7 @@ export default function ContactRoute() {
   const [searchParams] = useSearchParams();
   const preselectedCategory = searchParams.get("category") ?? "";
   const [category, setCategory] = useState(preselectedCategory);
+  const [requestSpeakingNote, setRequestSpeakingNote] = useState<string | null>(null);
   const site = getSite();
   const phone = site.telephone?.trim();
   const phoneHref = phone ? toTelHref(phone) : "";
@@ -53,6 +54,7 @@ export default function ContactRoute() {
 
   const onRequestSpeaking = () => {
     setCategory("speaking");
+    setRequestSpeakingNote("Please fill out the remaining fields of the contact form.");
     try {
       const url = new URL(window.location.href);
       url.searchParams.set("category", "speaking");
@@ -104,6 +106,16 @@ export default function ContactRoute() {
             action="/api/contact"
             className="mt-10 grid gap-5"
           >
+          {requestSpeakingNote ? (
+            <div
+              className="rounded-xl border border-border/70 bg-muted/30 px-4 py-3 text-sm text-muted-foreground"
+              role="status"
+              aria-live="polite"
+            >
+              <span className="font-medium text-foreground">Speaking request:</span>{" "}
+              {requestSpeakingNote}
+            </div>
+          ) : null}
           {/* honeypot */}
           <div className="hidden">
             <label>
