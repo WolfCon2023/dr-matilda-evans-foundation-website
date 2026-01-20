@@ -95,6 +95,18 @@ export default function DonateRoute() {
                 {cashAppId}
               </a>
             </div>
+            <div className="mt-4">
+              <div className="text-sm text-muted-foreground">Scan to pay</div>
+              <a href={cashAppUrl} target="_blank" rel="noreferrer" className="mt-2 inline-block">
+                <img
+                  src="/images/CashApp_DMEF.png"
+                  alt="Cash App QR code for $DMEEF"
+                  className="h-auto w-56 max-w-full rounded-lg border border-border/70 bg-background p-2"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            </div>
           </div>
 
           <div className="text-xs text-muted-foreground">
