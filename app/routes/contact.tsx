@@ -36,7 +36,9 @@ export default function ContactRoute() {
   const site = getSite();
   const phone = site.telephone?.trim();
   const phoneHref = phone ? toTelHref(phone) : "";
-  const preferredAdSrc = "/images/beverly-aiken-muhammad-speaking-ad.jpg";
+  // Note: Cloudflare may cache a 404 for static assets for several hours.
+  // Keep a version query-string so newly added assets show up immediately after deploy.
+  const preferredAdSrc = "/images/beverly-aiken-muhammad-speaking-ad.jpg?v=2026-01-20";
   const fallbackAdSrc = "/images/image_507366411-172x300.jpg";
   const [adSrc, setAdSrc] = useState(preferredAdSrc);
   const adAlt = useMemo(
