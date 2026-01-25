@@ -220,6 +220,16 @@ export default function Index() {
                   loading="lazy"
                 />
               </div>
+              <div className="text-xs text-muted-foreground">
+                <a
+                  href="https://walkforpeace.short.gy/live-map"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-semibold text-primary hover:underline"
+                >
+                  View the Walk for Peace live map →
+                </a>
+              </div>
               <div>
                 <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                   Community support
