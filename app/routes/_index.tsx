@@ -204,6 +204,39 @@ export default function Index() {
               </div>
             </motion.div>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.12 }}
+            className="mt-10"
+          >
+            <div className="grid gap-6 rounded-2xl border border-border/60 bg-background/70 p-5 backdrop-blur md:grid-cols-[180px_1fr] md:items-center">
+              <div className="overflow-hidden rounded-xl border border-border/60 bg-card shadow-sm">
+                <SmartImage
+                  src="/images/WalkForPeace.png"
+                  alt="Flyer announcing the Foundation’s support for the Walk for Peace."
+                  className="aspect-[3/4] w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  Community support
+                </div>
+                <h2 className="mt-2 font-serif text-xl tracking-tight md:text-2xl">
+                  Supporting the Walk for Peace
+                </h2>
+                <p className="mt-2 max-w-prose text-sm text-muted-foreground">
+                  This Walk for Peace is a cross-country peace pilgrimage led by
+                  Buddhist monks walking from Fort Worth, Texas, to Washington,
+                  D.C. The journey began in October 2025 and spans roughly 2,300
+                  miles over about 120 days, promoting peace, compassion,
+                  mindfulness, nonviolence, and unity.
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </Container>
       </section>
 
