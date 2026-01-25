@@ -211,21 +211,21 @@ export default function Index() {
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.12 }}
             className="mt-10"
           >
-            <div className="grid gap-6 rounded-2xl border border-border/60 bg-background/70 p-5 backdrop-blur md:grid-cols-[180px_1fr] md:items-center">
-              <div className="overflow-hidden rounded-xl border border-border/60 bg-card shadow-sm">
-                <SmartImage
-                  src="/images/WalkForPeace.png"
-                  alt="Flyer announcing the Foundation’s support for the Walk for Peace."
-                  className="aspect-[3/4] w-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <div className="text-xs text-muted-foreground">
+            <div className="grid gap-6 rounded-2xl border border-border/60 bg-background/70 p-6 backdrop-blur md:grid-cols-[220px_1fr] md:items-center md:gap-8">
+              <div className="grid gap-3">
+                <div className="overflow-hidden rounded-xl border border-border/60 bg-card shadow-sm">
+                  <SmartImage
+                    src="/images/WalkForPeace.png"
+                    alt="Flyer announcing the Foundation’s support for the Walk for Peace."
+                    className="aspect-[3/4] w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
                 <a
                   href="https://walkforpeace.short.gy/live-map"
                   target="_blank"
                   rel="noreferrer"
-                  className="font-semibold text-primary hover:underline"
+                  className="text-sm font-semibold text-primary hover:underline"
                 >
                   View the Walk for Peace live map →
                 </a>
@@ -237,12 +237,13 @@ export default function Index() {
                 <h2 className="mt-2 font-serif text-xl tracking-tight md:text-2xl">
                   Supporting the Walk for Peace
                 </h2>
-                <p className="mt-2 max-w-prose text-sm text-muted-foreground">
-                  This Walk for Peace is a cross-country peace pilgrimage led by
-                  Buddhist monks walking from Fort Worth, Texas, to Washington,
-                  D.C. The journey began in October 2025 and spans roughly 2,300
-                  miles over about 120 days, promoting peace, compassion,
-                  mindfulness, nonviolence, and unity.
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
+                  The Walk for Peace is a cross-country peace pilgrimage led by
+                  Buddhist monks traveling on foot from Fort Worth, Texas, to
+                  Washington, D.C. Beginning in October 2025, the journey covers
+                  roughly 2,300 miles over about 120 days and promotes peace,
+                  compassion, mindfulness, nonviolence, and unity in communities
+                  along the way.
                 </p>
               </div>
             </div>
