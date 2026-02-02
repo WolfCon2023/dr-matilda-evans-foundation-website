@@ -133,10 +133,24 @@ export function SiteHeader() {
   };
 
   const preferred: MenuItem[] = [];
+  // Put Behavioral Health under Explore (not in "More").
+  const behavioralHealth =
+    pick((i) => i.url.toLowerCase().startsWith("/behavioral-health")) ??
+    pick((i) => i.title.toLowerCase().includes("behavioral health"));
+
   preferred.push({
     title: "Explore the Foundation",
     url: "/#explore-foundation",
-    children: [],
+    children: behavioralHealth
+      ? [
+          {
+            ...behavioralHealth,
+            title: "Behavioral Health Within Our Communities",
+            url: "/behavioral-health",
+            children: [],
+          },
+        ]
+      : [],
   });
 
   const about =
