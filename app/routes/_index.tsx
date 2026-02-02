@@ -8,6 +8,7 @@ import {
   Newspaper,
   Images,
   Users,
+  HeartPulse,
   X,
 } from "lucide-react";
 import type { MetaFunction } from "@remix-run/node";
@@ -337,6 +338,10 @@ export default function Index() {
                   ? Images
                   : title.includes("seminar") || (href ?? "").includes("/seminars")
                     ? Newspaper
+                  : title.includes("behavioral") ||
+                      title.includes("health") ||
+                      (href ?? "").startsWith("/behavioral-health")
+                    ? HeartPulse
                   : title.includes("academy") ||
                       (href ?? "").startsWith("/dr-evans-academy")
                     ? BookOpen
