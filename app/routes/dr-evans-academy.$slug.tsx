@@ -18,9 +18,17 @@ export async function loader({
     throw new Response("Not found", { status: 404 });
   };
   if (!slug) notFound();
+
+  // Legacy URL redirect (renamed + moved to Behavioral Health section)
+  if (slug === "promoting-mental-and-behavioral-health-within-our-communities") {
+    return Response.redirect("/behavioral-health/a-walk-for-peace", 301) as any;
+  }
   const post = getPostBySlug(slug);
   if (!post) notFound();
   const p = post!;
+  if ((p.section ?? "academy") !== "academy") {
+    return Response.redirect(`/behavioral-health/${p.slug}`, 302) as any;
+  }
   return { slug: p.slug, title: p.title, date: p.date, updated: p.updated };
 }
 

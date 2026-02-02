@@ -17,9 +17,10 @@ export const meta: MetaFunction = () => [
 export default function AcademyIndexRoute() {
   const academyPage = getPageBySlug("dr-evans-academy");
   const AcademyPage = academyPage?.Component;
-  const posts = getAllPosts().sort((a, b) =>
-    (b.date ?? "").localeCompare(a.date ?? "")
-  );
+  const posts = getAllPosts()
+    // Keep Behavioral Health articles in their own section.
+    .filter((p) => (p.section ?? "academy") === "academy")
+    .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
 
   return (
     <Container className="py-14 md:py-20">

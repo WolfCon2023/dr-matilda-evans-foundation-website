@@ -39,6 +39,11 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
+                <Link className="hover:text-foreground" to="/behavioral-health">
+                  Behavioral Health
+                </Link>
+              </li>
+              <li>
                 <Link className="hover:text-foreground" to="/contact">
                   Contact
                 </Link>

@@ -7,6 +7,7 @@ const RESERVED = new Set(["home", "dr-evans-academy"]);
 const ROUTE_FILES = new Set([
   "contact",
   "donate",
+  "behavioral-health",
   "privacy",
   "cookies",
   "terms",
@@ -22,6 +23,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
   urls.push({ loc: absoluteUrl(origin, "/") });
   urls.push({ loc: absoluteUrl(origin, "/dr-evans-academy") });
+  urls.push({ loc: absoluteUrl(origin, "/behavioral-health") });
 
   for (const page of getAllPages()) {
     if (RESERVED.has(page.slug)) continue;
@@ -33,8 +35,10 @@ export async function loader({ request }: LoaderFunctionArgs) {
   }
 
   for (const post of getAllPosts()) {
+    const section = (post as any).section ?? "academy";
+    const base = section === "behavioral-health" ? "/behavioral-health" : "/dr-evans-academy";
     urls.push({
-      loc: absoluteUrl(origin, `/dr-evans-academy/${post.slug}`),
+      loc: absoluteUrl(origin, `${base}/${post.slug}`),
       lastmod: post.updated ?? post.date,
     });
   }

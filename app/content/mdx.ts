@@ -22,6 +22,7 @@ export type PageEntry = {
   title: string;
   date?: string;
   updated?: string;
+  section?: string;
   Component: ComponentType;
 };
 
@@ -43,6 +44,7 @@ function toEntry(filePath: string, mod: unknown): PageEntry | null {
     title: String(fm.title ?? filenameSlug(filePath)),
     date: typeof fm.date === "string" ? fm.date : undefined,
     updated: typeof fm.updated === "string" ? fm.updated : undefined,
+    section: typeof fm.section === "string" ? fm.section : undefined,
     Component,
   };
 }
