@@ -48,6 +48,7 @@ export default function BehavioralHealthPostRoute() {
     throw new Response("Not found", { status: 404 });
   }
   const Post = post.Component;
+  const heroImage = post.heroImage;
   const matches = useMatches();
   const origin = String((matches.find((m) => m.id === "root")?.data as any)?.origin ?? "");
   const ld = origin
@@ -77,7 +78,26 @@ export default function BehavioralHealthPostRoute() {
             dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }}
           />
         ) : null}
-        <Post />
+        {heroImage ? (
+          <div className="mt-8 grid gap-8 md:grid-cols-[1fr_280px] md:items-start">
+            <div>
+              <Post />
+            </div>
+            <aside className="not-prose">
+              <div className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-sm md:sticky md:top-24">
+                <img
+                  src={heroImage}
+                  alt={`${data.title} — image`}
+                  className="h-auto w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </aside>
+          </div>
+        ) : (
+          <Post />
+        )}
       </article>
     </Container>
   );
