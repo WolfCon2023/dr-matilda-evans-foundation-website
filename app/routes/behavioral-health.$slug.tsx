@@ -4,6 +4,7 @@ import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { Container } from "~/components/site/container";
 import { getPostBySlug } from "~/content/mdx";
 import { articleJsonLd, getSite } from "~/seo";
+import { Volume2 } from "lucide-react";
 
 export async function loader({
   params,
@@ -49,6 +50,7 @@ export default function BehavioralHealthPostRoute() {
   }
   const Post = post.Component;
   const heroImage = post.heroImage;
+  const audioSrc = post.audioSrc;
   const matches = useMatches();
   const origin = String((matches.find((m) => m.id === "root")?.data as any)?.origin ?? "");
   const ld = origin
@@ -78,20 +80,47 @@ export default function BehavioralHealthPostRoute() {
             dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }}
           />
         ) : null}
-        {heroImage ? (
+        {heroImage || audioSrc ? (
           <div className="mt-8 grid gap-8 md:grid-cols-[1fr_280px] md:items-start">
             <div>
               <Post />
             </div>
             <aside className="not-prose">
-              <div className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-sm md:sticky md:top-24">
-                <img
-                  src={heroImage}
-                  alt={`${data.title} — image`}
-                  className="h-auto w-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
+              <div className="grid gap-4 md:sticky md:top-24">
+                {heroImage ? (
+                  <div className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-sm">
+                    <img
+                      src={heroImage}
+                      alt={`${data.title} — image`}
+                      className="h-auto w-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                ) : null}
+
+                {audioSrc ? (
+                  <div className="rounded-2xl border border-border/70 bg-muted/30 p-4 shadow-sm">
+                    <div className="flex items-center gap-2 text-sm font-semibold">
+                      <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl border border-border/70 bg-background">
+                        <Volume2 className="h-4 w-4" aria-hidden />
+                      </span>
+                      Audio recording
+                    </div>
+                    <div className="mt-2 text-xs text-muted-foreground">
+                      Interview with Wauneta Lone Wolf (1997).
+                    </div>
+                    <audio
+                      className="mt-3 w-full"
+                      controls
+                      preload="metadata"
+                      controlsList="nodownload"
+                    >
+                      <source src={audioSrc} type="audio/mpeg" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </div>
+                ) : null}
               </div>
             </aside>
           </div>

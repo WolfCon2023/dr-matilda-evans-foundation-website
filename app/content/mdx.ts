@@ -24,6 +24,7 @@ export type PageEntry = {
   updated?: string;
   section?: string;
   heroImage?: string;
+  audioSrc?: string;
   Component: ComponentType;
 };
 
@@ -47,6 +48,7 @@ function toEntry(filePath: string, mod: unknown): PageEntry | null {
     updated: typeof fm.updated === "string" ? fm.updated : undefined,
     section: typeof fm.section === "string" ? fm.section : undefined,
     heroImage: typeof fm.heroImage === "string" ? fm.heroImage : undefined,
+    audioSrc: typeof fm.audioSrc === "string" ? fm.audioSrc : undefined,
     Component,
   };
 }
