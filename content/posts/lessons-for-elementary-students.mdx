@@ -1,0 +1,77 @@
+---
+title: "LESSONS FOR ELEMENTARY STUDENTS"
+slug: "lessons-for-elementary-students"
+type: "post"
+date: "2026-02-01"
+updated: "2026-02-01"
+---
+import {
+  Apple,
+  Brain,
+  Droplet,
+  Dumbbell,
+  Eye,
+  FlaskConical,
+  Hand,
+  HeartPulse,
+  Sun,
+  Wind,
+} from "lucide-react";
+
+export function Fact({ n, icon: Icon, children }) {
+  return (
+    <li className="group flex items-center gap-4 rounded-2xl border border-border/60 bg-card p-4 shadow-sm transition-colors hover:bg-accent/20 sm:p-5">
+      <span className="sr-only">{n}.</span>
+      <div className="flex shrink-0 items-center gap-2">
+        <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-primary/25 bg-primary text-xs font-semibold text-primary-foreground shadow-sm">
+          {n}
+        </span>
+        <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-primary shadow-sm">
+          <Icon className="h-5 w-5" />
+        </span>
+      </div>
+      <div className="text-sm leading-relaxed text-foreground">{children}</div>
+    </li>
+  );
+}
+
+**DR. MATILDA A. EVANS’ CLASS**
+
+## Lessons (Elementary)
+
+<ol className="not-prose mt-4 grid gap-3">
+  <Fact n={1} icon={HeartPulse}>
+    Octopuses have three hearts and blue blood.
+  </Fact>
+  <Fact n={2} icon={Droplet}>
+    The human body has blue blood, too.
+  </Fact>
+  <Fact n={3} icon={Wind}>
+    The blue blood in the human body is red blood carrying waste to be expelled
+    from our bodies.
+  </Fact>
+  <Fact n={4} icon={Eye}>
+    Butterflies taste with their feet.
+  </Fact>
+  <Fact n={5} icon={Hand}>
+    Sea otters hold hands with each other while they sleep so they won’t drift
+    away.
+  </Fact>
+  <Fact n={6} icon={Sun}>
+    Honey never spoils.
+  </Fact>
+  <Fact n={7} icon={Apple}>
+    Apples float on water because they are 25% air.
+  </Fact>
+  <Fact n={8} icon={Brain}>
+    The letter “Q” does not appear in the name of any state in the United
+    States.
+  </Fact>
+  <Fact n={9} icon={FlaskConical}>
+    Ketchup was once considered medicine.
+  </Fact>
+  <Fact n={10} icon={Dumbbell}>
+    Elephants can't jump.
+  </Fact>
+</ol>
+
