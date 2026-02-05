@@ -212,40 +212,75 @@ export default function Index() {
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.12 }}
             className="mt-10"
           >
-            <div className="grid gap-6 rounded-2xl border border-border/60 bg-background/70 p-6 backdrop-blur md:grid-cols-[220px_1fr] md:items-center md:gap-8">
-              <div className="grid gap-3">
+            <div className="grid gap-6 md:grid-cols-2">
+              <div className="grid gap-6 rounded-2xl border border-border/60 bg-background/70 p-6 backdrop-blur md:grid-cols-[220px_1fr] md:items-center md:gap-8">
+                <div className="grid gap-3">
+                  <div className="overflow-hidden rounded-xl border border-border/60 bg-card shadow-sm">
+                    <SmartImage
+                      src="/images/WalkForPeace.png"
+                      alt="Flyer announcing the Foundation’s support for the Walk for Peace."
+                      className="aspect-[3/4] w-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <a
+                    href="https://walkforpeace.short.gy/live-map"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-sm font-semibold text-primary hover:underline"
+                  >
+                    View the Walk for Peace live map →
+                  </a>
+                </div>
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Community support
+                  </div>
+                  <h2 className="mt-2 font-serif text-xl tracking-tight md:text-2xl">
+                    Supporting the Walk for Peace
+                  </h2>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
+                    The Walk for Peace is a cross-country peace pilgrimage led by
+                    Buddhist monks traveling on foot from Fort Worth, Texas, to
+                    Washington, D.C. Beginning in October 2025, the journey covers
+                    roughly 2,300 miles over about 120 days and promotes peace,
+                    compassion, mindfulness, nonviolence, and unity in communities
+                    along the way.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid gap-6 rounded-2xl border border-border/60 bg-background/70 p-6 backdrop-blur md:grid-cols-[220px_1fr] md:items-center md:gap-8">
                 <div className="overflow-hidden rounded-xl border border-border/60 bg-card shadow-sm">
                   <SmartImage
-                    src="/images/WalkForPeace.png"
-                    alt="Flyer announcing the Foundation’s support for the Walk for Peace."
+                    src="/images/beverly-aiken-muhammad-speaking-ad.jpg?v=2026-01-20"
+                    alt="Speaking engagements flyer for Beverly Aiken Muhammad."
                     className="aspect-[3/4] w-full object-cover"
                     loading="lazy"
                   />
                 </div>
-                <a
-                  href="https://walkforpeace.short.gy/live-map"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-sm font-semibold text-primary hover:underline"
-                >
-                  View the Walk for Peace live map →
-                </a>
-              </div>
-              <div>
-                <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                  Community support
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Speaking engagements
+                  </div>
+                  <h2 className="mt-2 font-serif text-xl tracking-tight md:text-2xl">
+                    Available for speaking
+                  </h2>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
+                    Beverly Aiken‑Muhammad is available for speaking engagements,
+                    interviews, panel discussions, and community appearances.
+                  </p>
+                  <div className="not-prose mt-5 flex flex-wrap gap-2">
+                    <Button asChild size="sm" variant="outline">
+                      <Link to="/beverly-aiken-muhammad">Learn more</Link>
+                    </Button>
+                    <Button asChild size="sm">
+                      <Link to="/contact?category=speaking#contact-form">
+                        Request speaking
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
-                <h2 className="mt-2 font-serif text-xl tracking-tight md:text-2xl">
-                  Supporting the Walk for Peace
-                </h2>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  The Walk for Peace is a cross-country peace pilgrimage led by
-                  Buddhist monks traveling on foot from Fort Worth, Texas, to
-                  Washington, D.C. Beginning in October 2025, the journey covers
-                  roughly 2,300 miles over about 120 days and promotes peace,
-                  compassion, mindfulness, nonviolence, and unity in communities
-                  along the way.
-                </p>
               </div>
             </div>
           </motion.div>
